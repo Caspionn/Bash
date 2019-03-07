@@ -1,0 +1,84 @@
+!/usr/bin/env bash
+
+###############################################################################
+#Created by	: Caspionn
+#Purpose	: Printing table of network int IP's, Subnet, DG & M.A.C
+#Date		: March 7, 2019
+#Version	: 0.0.1
+################################################################################	
+
+#Variables #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+ifconfig>iptable
+
+#messeges
+
+
+#Files
+
+
+#Arrays
+
+
+#misc
+line="============================================================"
+
+###Function/\/\/\/\/\/\/\/\/\/\/\//\/\/\/\
+
+#checking if ifconfig instaled
+	
+	ifconfig_exist()
+	{
+	if [($(which ifconfig) == /dev/null)]  then
+	
+		exit=1			
+	
+	else
+		exit=0
+	
+
+	fi
+	}
+
+#printing the table to screen
+	
+	
+	ifconfig_table()	
+	{
+
+	echo $line	
+	awk '/inet/ {print NR,$2,$3,$4}' iptable ; awk '/inet6/ {print $2}' iptable
+  	echo $line
+ 	
+	}
+	
+
+
+#program^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+	if [whoami==root] && [ifconfig_exist=0] then 
+		
+		 ifconfig_table  
+	fi	
+	
+	if [whoami!!root] then 
+		
+		 echo 'please log on as root' 
+	fi
+	
+	if [ifconfig_exist!!1] then
+
+		echo 'please install ifconfig service from yum'
+
+	fi	
+
+
+
+
+
+
+
+
+
